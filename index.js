@@ -79,3 +79,29 @@ function deletefun(e){
     console.log(e.target);
     node.removeChild(e.target.parentElement);
 }
+
+var filter=document.querySelector('#filter');
+filter.addEventListener('keyup',filteritem);
+function filteritem(e){
+    var val=e.target.value;
+var tottalitem=node.getElementsByTagName('li');
+var arr=Array.from(tottalitem);
+// forEach(function(i){
+//     var itemname=i.firstElementChild;
+
+//     // console.log(itemname);
+// });
+arr.forEach(function(item){
+var itemname=item.firstChild.textContent;
+if(itemname.toLowerCase().indexOf(val)!=-1){
+    item.style.display='block';
+}
+else{
+        item.style.display='none';
+
+}   
+}
+)
+}
+
+
