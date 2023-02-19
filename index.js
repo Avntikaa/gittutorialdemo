@@ -8,3 +8,5 @@ var c=document.getElementsByClassName('list-group-item');
 c[2].style.backgroundColor='green';
 for(var i=0;i<c.length;i++)
 c[i].style.fontWeight='bold';
+ var li=document.getElementsByTagName('li');
+li[2].style.color='red';
