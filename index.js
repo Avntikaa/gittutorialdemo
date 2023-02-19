@@ -65,6 +65,17 @@ var texts=document.createTextNode('item1');
 //append child is used when to append text in div ,h1 ,list 
 newdivs.appendChild(texts);
 //insrt 
-var ar=document.querySelector('header .conatiner');
-var h2=document.querySelector('header h1');
-ar.insertBefore(ar, h2);
+// var ar=document.querySelector('header .conatiner');
+// var h2=document.querySelector('header h1');
+// ar.insertBefore(ar, h2);
+
+//create button
+var newbtn=document.querySelector('.btn btn-danger btn-sm float-right delete');
+var btn1=document.querySelector('li button');
+console.log(btn1);
+console.log(node);
+node.addEventListener('click',deletefun);
+function deletefun(e){
+    console.log(e.target);
+    node.removeChild(e.target.parentElement);
+}
