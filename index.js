@@ -31,4 +31,40 @@ var qsa=document.querySelectorAll('li');
 qsa[2].style.color='green';
 for(var i=0;i<qsa.length;i+=2){
     qsa[i].style.backgroundColor='green';
-}
+}//parent nde
+var node=document.querySelector('#items');
+console.log('start node');
+console.log(node.parentNode);
+console.log(node.parentElement);
+console.log(node.children);
+//we can have index children[1]
+console.log(node.firstChild);
+console.log(node.firstElementChild.style.color='blue');
+console.log(node.lastChild);
+console.log(node.lastElementChild);
+console.log(node.lastElementChild);
+console.log(node.previousElementSibling);
+console.log(node.nextElementSibling);
+
+//now we will create element
+var newdiv=document.createElement('h4');
+newdiv.className='hjkf';
+newdiv.setAttribute('title','jkvhj');
+var text=document.createTextNode('HELLO');
+//append child is used when to append text in div ,h1 ,list 
+newdiv.appendChild(text);
+//insrt 
+var az=document.querySelector('div #items');
+var h1=document.querySelector('div .list-group-item');
+az.insertBefore(newdiv, h1);
+//2nd quetson
+var newdivs=document.createElement('li');
+newdivs.className='hjkf';
+newdivs.setAttribute('title','jkvhj');
+var texts=document.createTextNode('item1');
+//append child is used when to append text in div ,h1 ,list 
+newdivs.appendChild(texts);
+//insrt 
+var ar=document.querySelector('header .conatiner');
+var h2=document.querySelector('header h1');
+ar.insertBefore(ar, h2);
