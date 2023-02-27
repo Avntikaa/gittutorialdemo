@@ -25,14 +25,14 @@ function createPost(){
 //     })
 // }
 
-
+async function h1(){
+    for(let i=0;i<3;i++){
 Promise.all([createPost(), userlastactivity()]).then((x,y)=>{
     console.log(x);
     console.log(y);
-})
 
-Promise.all([createPost(), userlastactivity()]).then((x,y)=>{
-    console.log(x);
-    console.log(y);
 })
+    }
+}
+h1();
 
