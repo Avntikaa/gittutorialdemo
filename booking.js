@@ -1,9 +1,32 @@
+
 let val = document.getElementById('btm');
 var i=0;
-val.addEventListener('click', fun1);
+val.addEventListener('click', addData);
 var newh3 = document.createElement('ul');
 newh3.id = 'ulele';
-function fun1(e) {
+window.onload=()=>{
+   for(var i=0;i<localStorage.length;i++){
+      var e=localStorage.key(i);
+     var parseval= JSON.parse(localStorage.getItem(e));
+      DisplayData(parseval);
+   }
+}
+// function fun1(e) {
+//    e.preventDefault();
+//    var names = document.getElementById("fnames").value;
+//    var emailadd = document.getElementById("femail").value;
+//    var phone = document.getElementById("ftel").value;
+//    var time = document.getElementById("ftime").value;
+//    var date = document.getElementById("fdate").value;
+//    let obj = { name: names, email: emailadd, phone: phone, time: time, date: date };
+//    var newobj = JSON.stringify(obj);//tonconvert object into string as localstorage contain string
+//    localStorage.setItem(emailadd, newobj);
+//    var parseval = JSON.parse(localStorage.getItem(emailadd));//to convert string intonobject
+//    //create new div
+//    DisplayData(parseval);
+// }
+
+function addData(e){
    e.preventDefault();
    var names = document.getElementById("fnames").value;
    var emailadd = document.getElementById("femail").value;
@@ -11,10 +34,14 @@ function fun1(e) {
    var time = document.getElementById("ftime").value;
    var date = document.getElementById("fdate").value;
    let obj = { name: names, email: emailadd, phone: phone, time: time, date: date };
-   var newobj = JSON.stringify(obj);//tonconvert object into string as localstorage contain string
-   localStorage.setItem(emailadd, newobj);
-   var parseval = JSON.parse(localStorage.getItem(emailadd));//to convert string intonobject
-   //create new div
+axios.post("https://crudcrud.com/api/4e718071c8e4493797e85383f680d655/Bookingapp",obj)
+.then(res=>{
+   console.log(res.data);
+   DisplayData(res.data);
+})//adding promise
+  .catch(err=>console.log(err));}
+
+function DisplayData(parseval){
 var li = document.createElement('li');
    li.className = "list-group-item";
    
