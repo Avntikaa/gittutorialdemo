@@ -5,7 +5,7 @@ val.addEventListener('click', addData);
 var newh3 = document.createElement('ul');
 newh3.id = 'ulele';
 window.onload=()=>{
-   axios.get("https://crudcrud.com/api/4e718071c8e4493797e85383f680d655/Bookingapp")
+   axios.get("https://crudcrud.com/api/3111722366624a389fdc5c8e189cafa4/Bookingapp")
    .then((response)=>{
       console.log(response.data);
       for(var i=0;i<response.data.length;i++)
@@ -37,7 +37,7 @@ function addData(e){
    var time = document.getElementById("ftime").value;
    var date = document.getElementById("fdate").value;
    let obj = { name: names, email: emailadd, phone: phone, time: time, date: date };
-axios.post("https://crudcrud.com/api/4e718071c8e4493797e85383f680d655/Bookingapp",obj)
+axios.post("https://crudcrud.com/api/3111722366624a389fdc5c8e189cafa4/Bookingapp",obj)
 .then(res=>{
    console.log(res.data);
    DisplayData(res.data);
@@ -47,12 +47,13 @@ axios.post("https://crudcrud.com/api/4e718071c8e4493797e85383f680d655/Bookingapp
 function DisplayData(parseval){
 var li = document.createElement('li');
    li.className = "list-group-item";
-   
+   let l0=showvalue(parseval._id,li)
  let l1=showvalue(parseval.name,li);
   let l2=  showvalue(parseval.email,li);
   let l3=showvalue(parseval.phone);
  let l4= showvalue(parseval.time);
  let l5= showvalue(parseval.date);
+ li.appendChild(l0);
 li.appendChild(l1);
 li.appendChild(l2);
 li.appendChild(l3);
@@ -92,8 +93,12 @@ function removeitem(e) {
    if (e.target.classList.contains('delete')) {
       let li = e.target.parentElement;
       lielement.removeChild(li);
-      localStorage.removeItem(li.children[1].textContent);
-   }
+   let id=e.target.parentElement.children[0].textContent
+   axios.delete(`https://crudcrud.com/api/3111722366624a389fdc5c8e189cafa4/Bookingapp/${id}`)
+.then(res=>{
+   console.log(res);   
+})
+  .catch(err=>console.log(err));}
 }
 
 //edit item
