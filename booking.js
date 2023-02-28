@@ -5,12 +5,15 @@ val.addEventListener('click', addData);
 var newh3 = document.createElement('ul');
 newh3.id = 'ulele';
 window.onload=()=>{
-   for(var i=0;i<localStorage.length;i++){
-      var e=localStorage.key(i);
-     var parseval= JSON.parse(localStorage.getItem(e));
-      DisplayData(parseval);
+   axios.get("https://crudcrud.com/api/4e718071c8e4493797e85383f680d655/Bookingapp")
+   .then((response)=>{
+      console.log(response.data);
+      for(var i=0;i<response.data.length;i++)
+      DisplayData(response.data[i]);
+   })
+.catch(err=>console.log(err));
    }
-}
+
 // function fun1(e) {
 //    e.preventDefault();
 //    var names = document.getElementById("fnames").value;
